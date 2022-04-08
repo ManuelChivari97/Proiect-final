@@ -3,6 +3,8 @@ package test.mainPageTest;
 import org.testng.annotations.Test;
 import pages.BasePage;
 import test.BaseTest;
+
+import static pages.BasePage.clickBack;
 import static pages.BasePage.sleep;
 
 public class mainPageTest extends BaseTest {
@@ -19,8 +21,12 @@ public class mainPageTest extends BaseTest {
         sleep(2000);
         mainPage.clickInfoDropdownLink();
         sleep(2000);
+        mainPage.clickServiceLink();
+        sleep(2000);
+        mainPage.switchToNewTabWindow();
+        sleep(2000);
         mainPage.clickContactLink();
-        sleep(3000);
+        sleep(2000);
         mainPage.clickPieseUniversaleDropdownLink();
         sleep(2000);
         mainPage.hoverOverAllElementsInPieseUniversale();
@@ -34,7 +40,7 @@ public class mainPageTest extends BaseTest {
         sleep(2000);
         mainPage.setCarburant("benzina");
         sleep(2000);
-        mainPage.setCilindre("4.0");
+        mainPage.setCilindre("4.0 V8");
         sleep(2000);
         mainPage.setPutere("129343");
         sleep(2000);
@@ -45,6 +51,11 @@ public class mainPageTest extends BaseTest {
         BasePage.clickBack();
         sleep(2000);
         mainPage.clickPieseAutoConstantaLink();
+        sleep(2000);
+        clickBack();
+        mainPage.enterAutoPartInSearchBar("ulei");
+        sleep(2000);
+        mainPage.clickSearchBarSubmitButton();
         sleep(2000);
 
 

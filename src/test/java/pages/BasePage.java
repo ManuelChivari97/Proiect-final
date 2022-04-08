@@ -19,7 +19,7 @@ public class BasePage {
 
     public static void setUP() {
         LOG.info("Start Test");
-        System.setProperty("webdriver.chrome.driver", "C://Webdrivers/chromedriver_win32/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "C://ChromeDriver/chromedriver_win32/chromedriver.exe");
         driver = new ChromeDriver();
         String url = "https://www.epiesa.ro/";
         driver.get(url);

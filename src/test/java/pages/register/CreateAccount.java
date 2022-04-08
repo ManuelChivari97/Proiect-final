@@ -1,19 +1,22 @@
 package pages.register;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Wait;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import pages.BasePage;
-import pages.mainPage.MainPage;
+
+import java.util.Timer;
+import java.util.concurrent.TimeUnit;
 
 
-
-public class Register extends BasePage {
-    private static final Logger LOG = LoggerFactory.getLogger(Register.class);
-    public static Register instance;
+public class CreateAccount extends BasePage {
+    private static final Logger LOG = LoggerFactory.getLogger(CreateAccount.class);
+    public static CreateAccount instance;
 
 
     //login/cont nou
@@ -33,13 +36,23 @@ public class Register extends BasePage {
 
     private By submitButton = By.xpath("//input[@value='INREGISTRARE']");
 
+    //Login account
 
-    private Register() {
+    private By userLoginField = By.xpath("//input[@name='login_utilizator']");
+    private By passLoginField = By.xpath("//input[@name='login_parola']");
+    private By submitLoggingData = By.xpath("//button[@class='btn text-uppercase radius4 large-btn btn-warning btn-lg']");
+
+    //logout account
+
+    private By logoutAccount = By.xpath("//ul[2]//a[@href='/logout-epiesa/']");
+
+
+    private CreateAccount() {
     }
 
-    public static Register getInstance() {
+    public static CreateAccount getInstance() {
         if (instance == null) {
-            instance = new Register();
+            instance = new CreateAccount();
         }
         return instance;
 
@@ -70,6 +83,24 @@ public class Register extends BasePage {
         LOG.info("Click submit button");
         driver.findElement(submitButton).click();
     }
+
+    public void loginAccount(String logemail, String logpass){
+        LOG.info("Log account");
+        driver.findElement(userLoginField).sendKeys(logemail);
+        driver.findElement(passLoginField).sendKeys(logpass);
+    }
+
+    public void clickSubmitLogging(){
+        LOG.info("Click submit logging data");
+        driver.findElement(submitLoggingData).click();
+    }
+
+    public void clickDelogheazaLink(){
+        LOG.info("Click delogheaza ma link");
+        driver.findElement(logoutAccount).click();
+    }
+
+
 
 
 }

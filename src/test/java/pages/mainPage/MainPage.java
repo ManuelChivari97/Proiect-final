@@ -49,9 +49,13 @@ public class MainPage extends BasePage {
     String selectCilindre = "cilindree";
     String selectPutere = "motorizari";
 
-    //SearchBar
+    //searchbar
 
     private By searchBar = By.id("headersearch");
+
+    //searchbar submit
+
+    private By searchBarSubmitButton = By.xpath("//div[4]/form/input[@type='submit']");
 
     //Piese auto online links
 
@@ -157,11 +161,11 @@ public class MainPage extends BasePage {
     }
 
 
-    public void clickSearchBar(){
-        LOG.info("Click searchbar");
-        driver.findElement(searchBar).click();
+//    public void clickSearchBar(){
+//        LOG.info("Click searchbar");
+//        driver.findElement(searchBar).click();
 
-    }
+//    }
 
     public void clickAripaLink(){
         LOG.info("Click aripa link");
@@ -173,6 +177,32 @@ public class MainPage extends BasePage {
         LOG.info("Click piese auto Constanta link");
         driver.findElement(pieseAutoConstantaLink).sendKeys(Keys.PAGE_DOWN);
         driver.findElement(pieseAutoConstantaLink).click();
+    }
+
+    public void enterAutoPartInSearchBar(String ulei){
+        LOG.info("Enter auto part in searchbar");
+        driver.findElement(searchBar).sendKeys(ulei);
+    }
+
+    public void clickSearchBarSubmitButton(){
+        LOG.info("Click searchbar submit button");
+        driver.findElement(searchBarSubmitButton).click();
+    }
+
+    public void clickServiceLink(){
+        LOG.info("Click service link");
+        driver.findElement(serviceLink).click();
+    }
+
+    public void switchToNewTabWindow(){
+        String originalWindow = driver.getWindowHandle();
+        for (String windowHandle : driver.getWindowHandles()){
+            if(!originalWindow.contentEquals(windowHandle)){
+                driver.switchTo().window(windowHandle);
+                break;
+            }
+        }
+        driver.switchTo().window(originalWindow);
     }
 
 

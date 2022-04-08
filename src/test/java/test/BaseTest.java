@@ -4,13 +4,15 @@ import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import pages.BasePage;
 import pages.mainPage.MainPage;
-import pages.register.Register;
+import pages.myAccount.MyAccount;
+import pages.register.CreateAccount;
 
 
 public class BaseTest {
 
     public MainPage mainPage = MainPage.getInstance();
-    public Register register = Register.getInstance();
+    public CreateAccount createAccount = CreateAccount.getInstance();
+    public MyAccount myAccount = MyAccount.getInstance();
 
     @BeforeSuite
     public void init() { BasePage.setUP(); }
